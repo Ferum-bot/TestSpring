@@ -32,7 +32,6 @@ fun DependencyHandler.testImplementation(dependencyNotation: String): Dependency
     add("testImplementation", dependencyNotation)
 
 fun DependencyHandler.addDatabaseDependencies() {
-    implementation(Dependencies.MONGO_DB)
     implementation(Dependencies.JPA)
     runtimeOnly(Dependencies.H2)
 }

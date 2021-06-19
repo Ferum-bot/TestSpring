@@ -1,4 +1,4 @@
-package com.Ferumbot.github.TestSpring
+package com.Ferumbot.github.TestSpring.application
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
