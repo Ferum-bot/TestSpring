@@ -1,0 +1,4 @@
+package versions
+
+object Versions {
+}

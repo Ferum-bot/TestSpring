@@ -1,3 +1,4 @@
+import extensions.*
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
@@ -7,8 +8,8 @@ plugins {
 	kotlin("plugin.spring") version "1.5.10"
 }
 
-group = "com.Ferumbot.github"
-version = "0.0.1-SNAPSHOT"
+group = Config.GROUP
+version = Config.VERSION
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 repositories {
@@ -16,19 +17,22 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
-	implementation("org.springframework.boot:spring-boot-starter-web")
-	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
-	implementation("org.jetbrains.kotlin:kotlin-reflect")
-	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
-	testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+	addBaseSpringBootDependencies()
+
+	addKotlinDependencies()
+
+	addDatabaseDependencies()
+
+	addTestDependencies()
+
+	addDevToolsDependencies()
 }
 
 tasks.withType<KotlinCompile> {
 	kotlinOptions {
-		freeCompilerArgs = listOf("-Xjsr305=strict")
-		jvmTarget = "11"
+		freeCompilerArgs = Config.FREE_COMPILE_ARGS
+		jvmTarget = Config.JVM_TARGET
 	}
 }
 
